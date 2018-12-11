@@ -21,9 +21,13 @@ function baseUrl () {
   return getEnv('BASE_URL') || (isProduction() ? jyveApiUrl : devApiUrl)
 }
 
-const api = axios.create({
+const apiInstance = axios.create({
   baseURL: baseUrl(),
   adapter: cache.adapter
 })
 
-export { api }
+export const api = apiInstance
+// Hack so we can change the api base url from a parent
+export const setBaseUrl = url => {
+  api.defaults.baseURL = url
+}
