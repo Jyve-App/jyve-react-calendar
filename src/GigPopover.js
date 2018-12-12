@@ -16,14 +16,13 @@ const Gig = props => {
   const [gig, setGig] = useState(undefined)
   const [first, setFirst] = useState(undefined)
 
-  useEffect(async () => {
-    await api.get(`api/gigs/${gigId}`)
+  useEffect(() => {
+    api.get(`api/gigs/${gigId}`)
       .then(({ data }) => {
         setGig(data)
         return data
       })
-
-    await api.get(`api/gigs/${gigId}/performers`)
+      .then(() => api.get(`api/gigs/${gigId}/performers`))
       .then(({ data }) => {
         setPerformers(data)
         setFirst(data[0])

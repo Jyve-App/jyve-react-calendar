@@ -30,11 +30,15 @@ const LargeCalendar = props => {
 
   const StyledBigCalendar = styled(BigCalendar)`
     height: 80vw;
-    width: 95vw;
     margin: auto;
   
     .rbc-month-view {
       border-radius: 20px;
+      background-color: #f8f6ff;
+    }
+
+    .rbc-event-content {
+      color: ${secondary}
     }
 
     .rbc-month-view .rbc-month-row:first-child {
