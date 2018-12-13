@@ -1,8 +1,10 @@
 import React from 'react'
+import Media from 'react-media'
 import BigCalendar from 'react-big-calendar'
 import styled from 'react-emotion'
 import moment from 'moment'
 
+import { SmallCalendar } from './SmallCalendar'
 import { GigPopover } from './GigPopover'
 
 import 'react-big-calendar/lib/css/react-big-calendar.css'
@@ -30,6 +32,7 @@ const LargeCalendar = props => {
 
   const StyledBigCalendar = styled(BigCalendar)`
     height: 100%;
+    min-height: 520px;
     margin: auto;
   
     .rbc-month-view {
@@ -71,16 +74,24 @@ const LargeCalendar = props => {
   if (!gigs) return <span>Loading...</span>
 
   return (
-    <StyledBigCalendar
-      localizer={localizer}
-      events={gigs}
-      components={{
-        eventWrapper: props => {
-          return <GigPopover gigs={props.event} secondary={secondary} primary={primary}>{props.children}</GigPopover>
-        }
-      }}
-      {...accessors}
-    />
+    <Media query='(max-width: 576px)'>
+      {matches =>
+        !matches ? (
+          <StyledBigCalendar
+            localizer={localizer}
+            events={gigs}
+            components={{
+              eventWrapper: props => {
+                return <GigPopover gigs={props.event} secondary={secondary} primary={primary}>{props.children}</GigPopover>
+              }
+            }}
+            {...accessors}
+          />
+        ) : (
+          <SmallCalendar {...props} gigs={gigs} />
+        )
+      }
+    </Media>
   )
 }
 
