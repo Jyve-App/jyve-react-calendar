@@ -42,7 +42,7 @@ const Gig = props => {
               {first ? <a style={{ color: props.primary }} href={first ? `https://jyve.io/${first.prettyUrl}` : ''}>{gig.name}</a> : <div>{gig.name}</div>}
             </h3>
             <strong>
-              at <a style={{ color: props.primary }} href={`https://jyve.io/${gig.venue.prettyUrl}`}>{gig.venue.name}</a>
+              at <a style={{ color: props.secondary }} href={`https://jyve.io/${gig.venue.prettyUrl}`}>{gig.venue.name}</a>
             </strong>
             <p>{format(gig.startDate, 'h:mm')} - {format(gig.endDate, 'h:mm A')}</p>
           </div>

@@ -29,7 +29,7 @@ const LargeCalendar = props => {
   } = props
 
   const StyledBigCalendar = styled(BigCalendar)`
-    height: 80vw;
+    height: 100%;
     margin: auto;
   
     .rbc-month-view {
@@ -39,6 +39,13 @@ const LargeCalendar = props => {
 
     .rbc-event-content {
       color: ${secondary}
+    }
+
+    .rbc-btn-group {
+      button {
+        background: ${primary}
+        color: ${secondary}
+      }
     }
 
     .rbc-month-view .rbc-month-row:first-child {
@@ -64,18 +71,16 @@ const LargeCalendar = props => {
   if (!gigs) return <span>Loading...</span>
 
   return (
-    <div>
-      <StyledBigCalendar
-        localizer={localizer}
-        events={gigs}
-        components={{
-          eventWrapper: props => {
-            return <GigPopover gigs={props.event} primary={primary}>{props.children}</GigPopover>
-          }
-        }}
-        {...accessors}
-      />
-    </div>
+    <StyledBigCalendar
+      localizer={localizer}
+      events={gigs}
+      components={{
+        eventWrapper: props => {
+          return <GigPopover gigs={props.event} secondary={secondary} primary={primary}>{props.children}</GigPopover>
+        }
+      }}
+      {...accessors}
+    />
   )
 }
 

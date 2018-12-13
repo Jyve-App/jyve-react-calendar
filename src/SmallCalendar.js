@@ -1,4 +1,5 @@
 import React from 'react'
+import { css } from 'emotion'
 
 import DayPicker from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
@@ -50,6 +51,11 @@ const SmallCalendar = props => {
     }
   }
 
+  const daypickerClass = css`
+    border-radius: 15px;
+    background-color: #f8f6ff;
+  `
+
   function getConfig (node) {
     return fromPairs(
       Object.keys(modifierConfig).map(k => [k, modifierConfig[k][node]])
@@ -70,11 +76,13 @@ const SmallCalendar = props => {
   }
 
   return (
-    <DayPicker
-      modifiers={getConfig('predicate')}
-      modifiersStyles={getConfig('styles')}
-      renderDay={renderDay}
-    />
+    <div style={{ display: 'block', margin: 'auto' }}>
+      <DayPicker className={daypickerClass}
+        modifiers={getConfig('predicate')}
+        modifiersStyles={getConfig('styles')}
+        renderDay={renderDay}
+      />
+    </div>
   )
 }
 
