@@ -6,6 +6,7 @@ import moment from 'moment'
 
 import { SmallCalendar } from './SmallCalendar'
 import { GigPopover } from './GigPopover'
+import { PoweredBy } from './PoweredBy'
 
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
@@ -77,18 +78,23 @@ const LargeCalendar = props => {
     <Media query='(max-width: 576px)'>
       {matches =>
         !matches ? (
-          <StyledBigCalendar
-            localizer={localizer}
-            events={gigs}
-            components={{
-              eventWrapper: props => {
-                return <GigPopover gigs={props.event} secondary={secondary} primary={primary}>{props.children}</GigPopover>
-              }
-            }}
-            {...accessors}
-          />
+          <div>
+            <StyledBigCalendar
+              localizer={localizer}
+              events={gigs}
+              components={{
+                eventWrapper: props => {
+                  return <GigPopover gigs={props.event} secondary={secondary} primary={primary}>{props.children}</GigPopover>
+                }
+              }}
+              {...accessors}
+            />
+            <PoweredBy />
+          </div>
         ) : (
-          <SmallCalendar {...props} gigs={gigs} />
+          <div>
+            <SmallCalendar {...props} gigs={gigs} />
+          </div>
         )
       }
     </Media>

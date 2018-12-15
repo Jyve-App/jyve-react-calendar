@@ -9,6 +9,7 @@ import isSameDay from 'date-fns/is_same_day'
 import fromPairs from 'lodash/fromPairs'
 
 import { GigPopover } from './GigPopover'
+import { PoweredBy } from './PoweredBy'
 
 const DATE_FORMAT = 'YYYY-MM-DD'
 
@@ -54,6 +55,8 @@ const SmallCalendar = props => {
   const daypickerClass = css`
     border-radius: 15px;
     background-color: #f8f6ff;
+    margin: auto;
+    display: table;
   `
 
   function getConfig (node) {
@@ -82,6 +85,7 @@ const SmallCalendar = props => {
         modifiersStyles={getConfig('styles')}
         renderDay={renderDay}
       />
+      <PoweredBy />
     </div>
   )
 }
