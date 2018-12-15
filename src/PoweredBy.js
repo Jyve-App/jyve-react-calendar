@@ -1,6 +1,6 @@
 import React from 'react'
 
-import poweredBy from './assets/poweredby.jpg'
+import poweredBy from './assets/poweredby.png'
 
 export const PoweredBy = props => {
   return (
