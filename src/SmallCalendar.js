@@ -53,10 +53,12 @@ const SmallCalendar = props => {
   }
 
   const daypickerClass = css`
-    border-radius: 15px;
-    background-color: #f8f6ff;
-    margin: auto;
-    display: table;
+    .DayPicker {
+      border-radius: 15px;
+      background-color: #f8f6ff;
+      margin: auto;
+      display: table;
+    }
   `
 
   function getConfig (node) {
