@@ -53,11 +53,11 @@ const SmallCalendar = props => {
   }
 
   const daypickerClass = css`
-    .DayPicker {
+    &.DayPicker {
       border-radius: 15px;
       background-color: #f8f6ff;
       margin: auto;
-      display: table;
+      display: table !important;
     }
   `
 
@@ -83,6 +83,7 @@ const SmallCalendar = props => {
   return (
     <div style={{ display: 'block', margin: 'auto' }}>
       <DayPicker className={daypickerClass}
+        showOutsideDays
         modifiers={getConfig('predicate')}
         modifiersStyles={getConfig('styles')}
         renderDay={renderDay}
