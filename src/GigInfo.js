@@ -59,10 +59,9 @@ export const GigInfo = props => {
   )
 }
 
-export const GigInfos = ({ gigs, ...restProps }) => (
+export const GigInfos = ({ gigs, ...restProps }) =>
   Array.isArray(gigs) ? (
     gigs.map(gig => <GigInfo key={gig.id} {...restProps} gigId={gig.id} />)
   ) : (
     <GigInfo gigId={gigs.id} {...restProps} />
   )
-)

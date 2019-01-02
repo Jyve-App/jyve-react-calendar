@@ -9,7 +9,7 @@ import { LargeCalendar } from './LargeCalendar'
 import { api } from './api'
 
 const Calendar = props => {
-  const [gigs, setGigs] = useState(undefined)
+  const [gigs, setGigs] = useState(null)
   const [loading, setLoading] = useState(true)
 
   let spinnerClass = css`
@@ -47,5 +47,3 @@ const Calendar = props => {
 }
 
 export { Calendar }
-
-export default Calendar

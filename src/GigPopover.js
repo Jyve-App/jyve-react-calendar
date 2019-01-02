@@ -10,12 +10,11 @@ let popoverClass = css`
   }
 `
 
-// TODO: use react emotion to style the Gig properly
-
 export const GigPopover = props => {
   const { gigs, primary } = props
-  const Content = <GigInfos gigs={gigs} primary={primary} />
   return (
-    <Popover overlayClassName={popoverClass} arrowPointAtCenter content={Content}>{props.children}</Popover>
+    <Popover overlayClassName={popoverClass} arrowPointAtCenter content={<GigInfos gigs={gigs} primary={primary} />}>
+      {props.children}
+    </Popover>
   )
 }
