@@ -5,6 +5,9 @@ import { Popover } from 'antd'
 import { GigInfos } from './GigInfo'
 
 let popoverClass = css`
+  width: 100%;
+  max-width: 400px;
+
   .ant-popover-arrow {
     display: none;
   }
