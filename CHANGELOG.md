@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.6"></a>
+## [0.2.6](https://github.com/Jyve-App/jyve-react-calendar/compare/v0.2.5...v0.2.6) (2019-01-03)
+
+
+### Bug Fixes
+
+* pin react versions ([57caa73](https://github.com/Jyve-App/jyve-react-calendar/commit/57caa73))
+* set gigs to empty array if failed to load. build ([6a10033](https://github.com/Jyve-App/jyve-react-calendar/commit/6a10033))
+
+
+
 <a name="0.2.5"></a>
 ## [0.2.5](https://github.com/Jyve-App/jyve-react-calendar/compare/v0.2.4...v0.2.5) (2019-01-03)
 
