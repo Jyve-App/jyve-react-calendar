@@ -32,6 +32,7 @@ const Calendar = props => {
       setGigs(data)
       setLoading(false)
     }).catch(() => {
+      setGigs([])
       setLoading(false)
     })
   }, [props.token])
