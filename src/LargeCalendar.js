@@ -4,11 +4,15 @@ import BigCalendar from 'react-big-calendar'
 import styled from 'react-emotion'
 import moment from 'moment'
 
+import ContainerDimensions from 'react-container-dimensions'
+
 import { SmallCalendar } from './SmallCalendar'
 import { GigPopover } from './GigPopover'
 import { PoweredBy } from './PoweredBy'
 
 import 'react-big-calendar/lib/css/react-big-calendar.css'
+
+const MIN_WIDTH = 576
 
 const localizer = BigCalendar.momentLocalizer(moment)
 
@@ -31,66 +35,79 @@ const LargeCalendar = props => {
     secondary = 'white' // text color
   } = props
 
-  const StyledBigCalendar = styled(BigCalendar)`
-    height: 100%;
-    min-height: 520px;
-    margin: auto;
-  
-    .rbc-month-view {
-      border-radius: 20px;
-      background-color: #f8f6ff;
-    }
+  const Big = ({ height, width }) => {
+    const StyledBigCalendar = styled(BigCalendar)`
+      height: 100%;
+      min-height: 520px;
+      max-width: ${height * 1.2}px;
+      margin: auto;
+    
+      .rbc-month-view {
+        border-radius: 20px;
+        background-color: #f8f6ff;
+      }
 
-    .rbc-event-content {
-      color: ${secondary}
-    }
-
-    .rbc-btn-group {
-      button {
-        background: ${primary}
+      .rbc-event-content {
         color: ${secondary}
       }
-    }
 
-    .rbc-month-view .rbc-month-row:first-child {
-      border-top-right-radius: 20px;
-      border-top-left-radius: 20px;
-    }
+      .rbc-btn-group {
+        button {
+          background: ${primary}
+          color: ${secondary}
+        }
+      }
 
-    .rbc-month-view .rbc-month-row:last-child {
-      border-bottom-right-radius: 20px;
-      border-bottom-left-radius: 20px;
-    }
+      .rbc-month-view .rbc-month-row:first-child {
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+      }
 
-    .rbc-event {
-      background-color: ${primary};
-    }
+      .rbc-month-view .rbc-month-row:last-child {
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+      }
 
-    .rbc-today {
-      color: ${secondary};
-    }
-  `
+      .rbc-event {
+        background-color: ${primary};
+      }
+
+      .rbc-today {
+        color: ${secondary};
+      }
+    `
+
+    return width > MIN_WIDTH ? (
+      <div>
+        <StyledBigCalendar
+          localizer={localizer}
+          events={gigs}
+          components={{
+            eventWrapper: props => {
+              return <GigPopover gigs={props.event} secondary={secondary} primary={primary}>{props.children}</GigPopover>
+            }
+          }}
+          {...accessors}
+        />
+        <PoweredBy />
+      </div>
+    ) : (
+      <div>
+        <SmallCalendar {...props} gigs={gigs} />
+      </div>
+    )
+  }
 
   // TODO: Tyler. Make this prettier
   if (!gigs) return <span>Loading...</span>
 
   return (
-    <Media query='(max-width: 576px)'>
+    <Media query={`(max-width: ${MIN_WIDTH}px)`}>
       {matches =>
         !matches ? (
-          <div>
-            <StyledBigCalendar
-              localizer={localizer}
-              events={gigs}
-              components={{
-                eventWrapper: props => {
-                  return <GigPopover gigs={props.event} secondary={secondary} primary={primary}>{props.children}</GigPopover>
-                }
-              }}
-              {...accessors}
-            />
-            <PoweredBy />
-          </div>
+          <ContainerDimensions>
+            <Big />
+          </ContainerDimensions>
         ) : (
           <div>
             <SmallCalendar {...props} gigs={gigs} />
