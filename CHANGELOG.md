@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/Jyve-App/jyve-react-calendar/compare/v0.2.6...v0.3.0) (2019-02-05)
+
+
+### Features
+
+* adjust to SmallCalendar is placed in small div ([9e85d71](https://github.com/Jyve-App/jyve-react-calendar/commit/9e85d71))
+
+
+
 <a name="0.2.6"></a>
 ## [0.2.6](https://github.com/Jyve-App/jyve-react-calendar/compare/v0.2.5...v0.2.6) (2019-01-03)
 
