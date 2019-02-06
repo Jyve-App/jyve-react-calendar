@@ -81,7 +81,7 @@ const SmallCalendar = props => {
   }
 
   return (
-    <div style={{ display: 'block', margin: 'auto' }}>
+    <div className='foo' style={{ display: 'block', margin: 'auto' }}>
       <DayPicker className={daypickerClass}
         showOutsideDays
         modifiers={getConfig('predicate')}

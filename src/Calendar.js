@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { css } from 'emotion'
 
+import './styles.less'
+
 import { Spin } from 'antd'
+import 'antd/lib/spin/style'
 
 import { SmallCalendar } from './SmallCalendar'
 import { LargeCalendar } from './LargeCalendar'
@@ -42,7 +45,9 @@ const Calendar = props => {
 
   return (
     <Spin className={spinnerClass} tip='Loading Events...' spinning={loading} delay={500}>
-      {Calendar}
+      <div className='antd-scoped-container'>
+        {Calendar}
+      </div>
     </Spin>
   )
 }

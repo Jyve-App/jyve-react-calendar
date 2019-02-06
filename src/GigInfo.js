@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { Skeleton } from 'antd'
+import 'antd/lib/skeleton/style'
 
 import format from 'date-fns/format'
 

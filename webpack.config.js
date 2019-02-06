@@ -1,6 +1,7 @@
 var path = require('path')
 var pkg = require('./package.json')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var webpack = require('webpack')
 
 var libraryName = pkg.name
 
@@ -23,12 +24,20 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.s?css$/,
+        test: /\.(css)|(less)$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
             'css-loader',
-            'sass-loader'
+            {
+              loader: 'less-loader',
+              options: {
+                javascriptEnabled: true,
+                modifyVars: {
+                  'primary-color': '#a89be8'
+                }
+              }
+            }
           ]
         })
       },
@@ -46,7 +55,8 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin({
       filename: 'build.css'
-    })
+    }),
+    new webpack.NormalModuleReplacementPlugin(/node_modules\/antd\/lib\/style\/index\.less/, path.resolve(__dirname, 'src/styles.less'))
   ],
   externals: {
     react: {

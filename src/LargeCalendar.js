@@ -78,7 +78,7 @@ const LargeCalendar = props => {
     `
 
     return width > MIN_WIDTH ? (
-      <div>
+      <div className='foo'>
         <StyledBigCalendar
           localizer={localizer}
           events={gigs}

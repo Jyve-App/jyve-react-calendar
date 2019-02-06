@@ -1,5 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
+
+console.log(path.resolve(__dirname, '..', 'src/styles.less'))
 
 module.exports = {
   devtool: 'source-map',
@@ -24,8 +27,20 @@ module.exports = {
         ]
       },
       {
-        test: /\.s?css$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        test: /\.(css)|(less)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              javascriptEnabled: true,
+              modifyVars: {
+                'primary-color': '#a89be8'
+              }
+            }
+          }
+        ]
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -51,6 +66,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '../examples/index.html'),
       inject: 'body'
-    })
+    }),
+    new webpack.NormalModuleReplacementPlugin(/node_modules\/antd\/lib\/style\/index\.less/, path.resolve(__dirname, '..', 'src/styles.less'))
   ]
 }
