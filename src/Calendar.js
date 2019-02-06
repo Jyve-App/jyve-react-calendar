@@ -46,6 +46,7 @@ const Calendar = props => {
   return (
     <Spin className={spinnerClass} tip='Loading Events...' spinning={loading} delay={500}>
       <div className='antd-scoped-container'>
+        <div className='antd-popover-parent' />
         {Calendar}
       </div>
     </Spin>

@@ -17,7 +17,9 @@ let popoverClass = css`
 export const GigPopover = props => {
   const { gigs, primary } = props
   return (
-    <Popover overlayClassName={popoverClass} arrowPointAtCenter content={<GigInfos gigs={gigs} primary={primary} />}>
+    <Popover overlayClassName={popoverClass}
+      getPopupContainer={() => document.querySelector('.antd-popover-parent')}
+      arrowPointAtCenter content={<GigInfos gigs={gigs} primary={primary} />}>
       {props.children}
     </Popover>
   )

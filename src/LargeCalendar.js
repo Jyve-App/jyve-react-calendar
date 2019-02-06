@@ -75,6 +75,10 @@ const LargeCalendar = props => {
       .rbc-today {
         color: ${secondary};
       }
+
+      .rbc-date-cell {
+        color: black;
+      }
     `
 
     return width > MIN_WIDTH ? (
